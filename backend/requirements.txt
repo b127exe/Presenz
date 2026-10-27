@@ -7,3 +7,12 @@ opencv-python-headless
 insightface
 onnxruntime
 scipy
+
+# --- Face recognition (used by ml_service.py) ---
+# dlib publishes no wheels, so `face-recognition` pulls a source build that
+# fails without cmake + a C++ toolchain. Instead we install:
+dlib-bin
+face-recognition-models
+setuptools<81
+# ...plus the library itself without its dependency list (already satisfied above):
+#   uv pip install --no-deps face-recognition   (or: pip install --no-deps face-recognition)
